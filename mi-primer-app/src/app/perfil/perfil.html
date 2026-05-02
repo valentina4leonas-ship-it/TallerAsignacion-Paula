@@ -1,0 +1,43 @@
+<div class="tarjeta">
+
+  <div class="cabecera">
+    <div class="avatar">
+      {{ nombre.charAt(0) }}
+    </div>
+
+    <div class="info">
+      <h2>{{ nombre }}</h2>
+      <p class="profesion">{{ profesion }}</p>
+
+      <span class="estado" [class.activo]="disponible">
+        {{ disponible ? 'Disponible' : 'Ocupado' }}
+      </span>
+    </div>
+  </div>
+
+  <div class="acciones">
+    <button class="btn-like" (click)="darLike()">
+       Me gusta ({{ likes }})
+    </button>
+
+    <button class="btn-estado" (click)="cambiarEstado()">
+      Cambiar estado
+    </button>
+
+    <button class="btn-habilidades" (click)="alternarHabilidades()">
+      Mostrar habilidades
+    </button>
+  </div>
+
+  @if (mostrarHabilidades) {
+    <div class="habilidades">
+      <h3>Habilidades</h3>
+      <ul>
+        @for (hab of habilidades; track hab) {
+          <li>{{ hab }}</li>
+        }
+      </ul>
+    </div>
+  }
+
+</div>
